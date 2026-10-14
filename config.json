@@ -1,0 +1,31 @@
+{
+  "mineru": {
+    "enable": true,
+    "cli_path": "mineru",
+    "cli_path_absolute": "",
+    "default_tier": "standard",
+    "pages": "all",
+    "wait": 600,
+    "ocr_enable": true,
+    "server_autostart": true,
+    "fallback_script": "scripts/pdf_fallback.py"
+  },
+  "ppt_master": {
+    "enable": true,
+    "skill_name": "ppt-master",
+    "skill_dir": "../ppt-master",
+    "default_style": "academic-simple",
+    "default_theme": "navy-gray",
+    "aspect_ratio": "16:9"
+  },
+  "default": {
+    "duration": "15min",
+    "focus": "balanced",
+    "output_root": "./group-meeting-materials",
+    "template": "standard"
+  },
+  "archive": {
+    "folder_format": "{title}_组会材料_{date}",
+    "date_format": "YYYYMMDD"
+  }
+}

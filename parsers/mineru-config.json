@@ -1,0 +1,32 @@
+{
+  "engine": "mineru",
+  "cli": "mineru",
+  "version_requirement": ">=4.0,<5",
+  "parse": {
+    "command": "mineru parse \"{paper_path}\" --pages all --tier {tier} --wait {wait} --output \"{output_md}\" --json",
+    "default_tier": "standard",
+    "notes": [
+      "MinerU 默认只解析前 10 页，论文必须显式传 --pages all",
+      "标准档位需要本地托管解析服务：mineru-kit models download --tier standard 后 mineru config set parse_server.local.managed_tier standard / parse_server.local.mode managed",
+      "禁止在未获用户许可时使用 --remote（会上传论文）"
+    ]
+  },
+  "read_image": {
+    "command": "mineru read \"{locator}/page:{page_no}\" --format image --output \"{output_png}\"",
+    "usage": "按页导出图片素材，locator 从 parse --json 输出的 content.locator 取得"
+  },
+  "server": {
+    "start": "mineru server start",
+    "status": "mineru server status --json",
+    "stop": "mineru server stop"
+  },
+  "fallback": {
+    "engine": "pymupdf",
+    "command": "python \"{skill_dir}/scripts/pdf_fallback.py\" \"{paper_path}\" -o \"{output_dir}\"",
+    "limits": [
+      "公式不转 LaTeX，仅按文本原样保留",
+      "复杂表格结构可能失真",
+      "扫描版 PDF 无 OCR 能力"
+    ]
+  }
+}
