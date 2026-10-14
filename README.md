@@ -1,6 +1,18 @@
 # paper-group-meeting —— 论文组会材料全自动生成
 
-把一篇学术论文 PDF 变成整套组会汇报材料包：MinerU 深度解析 → 章节全覆盖精读 → 专业术语表 → PPT 大纲 → ppt-master 生成 PPTX → 逐页讲稿 → 演讲指南与 Q&A → 结构化归档。
+[English](README_EN.md) | **中文**
+
+把一篇学术论文 PDF 变成整套组会汇报材料包：MinerU 深度解析 → 章节全覆盖精读 → 专业术语表 → PPT 大纲 → 生成可编辑 PPTX → 逐页讲稿 → 演讲指南与 Q&A → 结构化归档。
+
+> 本仓库是一个 **Trae Skill**：把本目录放到 Trae 的 skill 目录下，用一句话指令即可跑完整个流程。
+
+## 特性
+
+- **章节全覆盖精读**：严格对应原文编号体系（§1/§2.1/§3.2 …），所有一级、二级章节逐一讲解，不跳章。
+- **公式讲透**：核心公式直接裁剪论文原式截图（与论文 100% 一致），并配白话解释 + 设计意图。
+- **中文优先、术语白话化**：正文中文表述，重要术语首次出现给 10–25 字白话解释。
+- **PPT 质量规范**：含页数弹性分配、版面安全区、每页一句话结论横幅、渲染自检三关审核。
+- **可降级运行**：MinerU / ppt-master 缺失时自动走降级路径，仍可交付核心材料。
 
 ## 环境
 
@@ -31,7 +43,8 @@
 paper-group-meeting/
 ├── SKILL.md                    # Skill 主指令文件（Trae 读取执行）
 ├── config.json                 # 全局配置（路径、默认参数、引擎）
-├── README.md                   # 本说明
+├── README.md                   # 中文说明
+├── README_EN.md                # English README
 ├── templates/
 │   ├── standard/               # 标准组会（15min，默认）
 │   ├── quick/                  # 快速汇报（5min）
@@ -42,6 +55,14 @@ paper-group-meeting/
 │   ├── pdf_fallback.py         # MinerU 不可用时的降级解析（PyMuPDF）
 │   └── build_archive.py        # 结构化归档脚本
 └── examples/                   # 输入 / 输出示例
+```
+
+## 工作流
+
+```
+PDF 深度解析 → 精读级论文解读 → 专业术语表 → PPT 大纲
+             → 生成 PPTX（模板填充重绘 / ppt-master）→ 渲染自检
+             → 逐页讲稿 → 演讲指南与 Q&A 预案 → 结构化归档
 ```
 
 ## 依赖组件
